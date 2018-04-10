@@ -1,0 +1,81 @@
+<div class="full-width-container">
+  <div class="jumbotron"><h2>Swapi demo</h2></div>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">1.1 Testing curly braces</h5>
+      <p class="card-text">{{'Double curly braces executes normal javascript. Here you get 3 ' +
+        'zzzzzzzzzz'.substring(0,3) + ' of ten'}}</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">2.1 Curly braces can be used to easily show components data</h5>
+      <p class="card-text">Components internal name is: {{name}}</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">3.1 Also pipes to transform data can be used</h5>
+      <p class="card-text">MINIME with lowercase pipe becomes {{'MINIME' | lowercase}}</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">2.1 Testing two-way data binding</h5>
+      <p class="card-text">Current last jedi is: <input type="text" [(ngModel)]="lastJedi"></p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">2.2 Displaying value of lastJedi with curly braces for testing purposes</h5>
+      <p class="card-text">{{lastJedi}}</p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">2.3 If we change value of 'lastJedi' in edit box or with click on next button, values
+        updates accordingly in the component and in html</h5>
+      <p class="card-text">
+        <button (click)="lastJedi = 'Luke'">Change last jedit to luke</button>
+      </p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">3.1 Showing data from service using interface and httpclient</h5>
+      <p class="card-text">
+        {{swLuke | json}}
+      </p>
+      <p class="card-text">
+        We can observe all properties are on object even if we set only 2 on model. Could lead to polluted code.
+        Also we cant set getters and setters on interfaces because they are not classes. That is bad because getters and
+        setter play nicely together with curly braces and double binding.
+      </p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">3.2 Showing data from service using class which optionally but ideally implements
+        interface.</h5>
+      <p class="card-text">
+        {{swLukeBest | json}}
+      </p>
+      <p class="card-text">
+        {{swLukeBest.nameAndHeight}}
+      </p>
+      <p class="card-text">
+        Here we observe only 2 properties are in class instance. Also getter method works.
+      </p>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">4.1 Showing list of vehicles with *ngFor and conditionally showing info with *ngIf if
+        vehicle contains passengers</h5>
+      <div *ngFor="let vehicle of swLukeBest.vehicles">
+        {{vehicle.name}} and it has <span *ngIf="vehicle.passengers == 0">ZERO</span> <span
+        *ngIf="vehicle.passengers > 0">{{vehicle.passengers}}</span> passengers
+      </div>
+    </div>
+  </div>
+</div>
